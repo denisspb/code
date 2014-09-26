@@ -10,7 +10,7 @@
 # usage instructions for the script:
 # python mcload.py <servername> <num of iterations> <datasize>
 # example:
-# python mcload.py "den-server:11212" 100000 99
+# python mcload.py den-server:11212 100000 30
 
 # 1) first param (den-server in my example) is memcached server box with port
 # 2) second param (100000) is number of set commands to do
