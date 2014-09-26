@@ -7,6 +7,8 @@
 
 import os
 import sys
+import threading
+import redis
 
 def parseSizeLine( line, dic ):
 	#STAT XY:chunk_size Z
@@ -52,7 +54,7 @@ def debugPrint( dic1, dic2 ):
 def fillRedis( r_server, slab, count, size ):
 	string_val = "x" * (size - 5) # -4 is to compensate key lenght (mc report full item size including key)
 	for x in range(1, count):
-		r_server.set(slab + "-" x, data)
+		r_server.set(slab + "-" + x, data)
 
 sizesFile = 'sizefile.txt'
 countFile = 'countfile.txt'
@@ -65,7 +67,7 @@ if (len(sys.argv) > 2):
 	countFile = int(sys.argv[2])
 
 if (len(sys.argv) > 3):
-	server = str(sys.argv[3œ])
+	server = str(sys.argv[3])
 
 dicSizes = loadSizes(sizesFile)
 dicCount = loadCount(countFile)
@@ -75,11 +77,8 @@ r_server = redis.Redis(server)
 
 for slab,count in dicCount.items():
 	size = dicSizes.get(slab, -1)
-	if (size == -1)
+	if size == -1:
 		raise Exception("No size found for " + slab)
 		
 	print(slab + ":" + count + "size:" + size)
 	fillRedis(r_server, slab, count, size)
-
-
- 
