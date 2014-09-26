@@ -52,9 +52,9 @@ def debugPrint( dic1, dic2 ):
 	    print(k + " " + v)   
 
 def fillRedis( r_server, slab, count, size ):
-	string_val = "x" * (size - 5) # -4 is to compensate key lenght (mc report full item size including key)
-	for x in range(1, count):
-		r_server.set(slab + "-" + `x`, data)
+	string_val = "x" * (int(size) - 5) # -4 is to compensate key lenght (mc report full item size including key)
+	for x in range(1, int(count)):
+		r_server.set(slab + "-" + str(x), data)
 
 sizesFile = 'sizefile.txt'
 countFile = 'countfile.txt'
