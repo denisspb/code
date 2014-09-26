@@ -85,5 +85,5 @@ for slab,count in dicCount.items():
 	if size == -1:
 		raise Exception("No size found for " + slab)
 	count = int(count)
-	print(slab + ":" + count + "size:" + size)
+	print(`slab` + ":" + `count` + "size:" + `size`)
 	fillRedis(r_server, slab, count, size)
