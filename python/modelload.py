@@ -59,7 +59,7 @@ def fillRedis( r_server, slab, count, size ):
 	for x in range(1, count):
 		r_server.set(slab + "-" + str(x), string_val)
 		if (x % 250 == 0):
-			sys.stdout.write('.')
+			print('.'),
 
 sizesFile = 'sizefile.txt'
 countFile = 'countfile.txt'
