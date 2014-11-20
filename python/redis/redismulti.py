@@ -5,6 +5,7 @@
 # usage instructions for the script:
 # python redismulti.py <servername> <num of iterations> <datasize> <numberOfThreads>
 # example:
+# python redismulti.py localhost 100 99 1
 # python redismulti.py den-sever 100000 99 101
 # 1) first param (den-server in my example) is redis server box
 # 2) second param (100000) is number of set commands to do

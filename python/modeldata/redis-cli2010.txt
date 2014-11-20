@@ -1,0 +1,94 @@
+[dsamoylov@redis1001.ve redis]$ redis-cli 
+127.0.0.1:6379> info
+# Server
+redis_version:2.8.13
+redis_git_sha1:8c706a24
+redis_git_dirty:0
+redis_build_id:26b8246e46773a02
+redis_mode:standalone
+os:Linux 2.6.32-431.29.2.el6.x86_64 x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.4.7
+process_id:22388
+run_id:04fe2f2f9540136e21bd4b6ffd79d490b41a3689
+tcp_port:6379
+uptime_in_seconds:1995839
+uptime_in_days:23
+hz:10
+lru_clock:5337946
+config_file:/etc/redis_6379.conf
+
+# Clients
+connected_clients:1
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:38654706256
+used_memory_human:36.00G
+used_memory_rss:43350106112
+used_memory_peak:40183192952
+used_memory_peak_human:37.42G
+used_memory_lua:33792
+mem_fragmentation_ratio:1.12
+mem_allocator:jemalloc-3.6.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:94399466
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1414617552
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:1
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:9
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+aof_current_size:41458166781
+aof_base_size:2620443786
+aof_pending_rewrite:0
+aof_buffer_length:0
+aof_rewrite_buffer_length:0
+aof_pending_bio_fsync:0
+aof_delayed_fsync:0
+
+# Stats
+total_connections_received:1875475
+total_commands_processed:194451579
+instantaneous_ops_per_sec:1
+rejected_connections:0
+sync_full:1875421
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:53724585
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:23
+
+# Replication
+role:master
+connected_slaves:1
+slave0:ip=10.32.177.6,port=6379,state=online,offset=41458190444,lag=0
+master_repl_offset:41458190444
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:41457141869
+repl_backlog_histlen:1048576
+
+# CPU
+used_cpu_sys:5073.82
+used_cpu_user:2603.90
+used_cpu_sys_children:30.96
+used_cpu_user_children:53.97
+
+# Keyspace
+db0:keys=68880821,expires=0,avg_ttl=0

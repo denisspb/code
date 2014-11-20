@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # Model load
 #
-# python modelload.py <sizesfile> <countfile> <redisserver>
-# python modelload.py mc_sizes1 mc_count1 den-sever
+# python modelloadmulti.py <sizesfile> <countfile> <redisserver>
+# python modelloadmulti.py mc_sizes1 mc_count1 den-sever
 # 
 # <sizefile> is result of echo "stats slabs" | nc localhost 11211 | grep chunk_size 
 # <countfile>  echo "stats items" | nc localhost 11211 | grep number
@@ -45,7 +45,7 @@ def loadCount( fileName ):
 	ins.close()
 	return dic
 
-def debugPrint( dic1, dic2 ):
+def debugPrint(dic1, dic2):
 	print("Sizes:")
 	for k,v in dic1.items():
 	    print(k + " " + v)
@@ -54,16 +54,20 @@ def debugPrint( dic1, dic2 ):
 	for k,v in dicCount.items():
 	    print(k + " " + v)   
 
-def fillRedis( r_server, slab, count, size ):	
+def fillRedis(r_server, slab, count, size):	
 	string_val = "x" * (size - 5) # -4 is to compensate key lenght (mc report full item size including key)
 	for x in range(1, count):
-		r_server.set(slab + "-" + str(x), string_val)
+		key = slab + "-" + str(x)
+		serverId = abs(hash(key)) % (num_servers)
+		r_server[serverId].set(key, string_val)
+
 		if (x % 250 == 0):
 			print('.'),
 
 sizesFile = 'sizefile.txt'
 countFile = 'countfile.txt'
 server = 'localhost'
+num_servers = 4
 
 if (len(sys.argv) > 1):
 	sizesFile = str(sys.argv[1])
@@ -78,7 +82,10 @@ dicSizes = loadSizes(sizesFile)
 dicCount = loadCount(countFile)
 
 print ("connecting to server: %s" % server)
-r_server = redis.Redis(server) 
+rserver = []
+for i in range(num_servers):
+	rserver.append(redis.Redis(server, 6379 + i))
+
 
 for slab,count in dicCount.items():
 	size = int(dicSizes.get(slab, -1))
@@ -86,4 +93,4 @@ for slab,count in dicCount.items():
 		raise Exception("No size found for " + slab)
 	count = int(count)
 	print(`slab` + ":" + `count` + "size:" + `size`)
-	fillRedis(r_server, slab, count, size)
+	fillRedis(rserver, slab, count, size)

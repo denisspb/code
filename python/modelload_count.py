@@ -1,17 +1,14 @@
 #!/usr/bin/env python
 # Model load
 #
-# python modelload.py <sizesfile> <countfile> <redisserver>
-# python modelload.py mc_sizes1 mc_count1 den-sever
+# python modelload.py  <countfile> 
+# python modelload.py mc_count1
 # 
-# <sizefile> is result of echo "stats slabs" | nc localhost 11211 | grep chunk_size 
 # <countfile>  echo "stats items" | nc localhost 11211 | grep number
-# <redisserver> is redis server box
+
 
 import os
 import sys
-import threading
-import redis
 
 def parseSizeLine( line, dic ):
 	#STAT XY:chunk_size Z
@@ -66,24 +63,12 @@ countFile = 'countfile.txt'
 server = 'localhost'
 
 if (len(sys.argv) > 1):
-	sizesFile = str(sys.argv[1])
+	countFile = sys.argv[1]
 
-if (len(sys.argv) > 2):
-	countFile = str(sys.argv[2])
-
-if (len(sys.argv) > 3):
-	server = str(sys.argv[3])
-
-dicSizes = loadSizes(sizesFile)
 dicCount = loadCount(countFile)
-
-print ("connecting to server: %s" % server)
-r_server = redis.Redis(server) 
+total = 0
 
 for slab,count in dicCount.items():
-	size = int(dicSizes.get(slab, -1))
-	if size == -1:
-		raise Exception("No size found for " + slab)
-	count = int(count)
-	print(`slab` + ":" + `count` + "size:" + `size`)
-	fillRedis(r_server, slab, count, size)
+	total += int(count)
+
+print(total)
