@@ -8,6 +8,7 @@ import threading
 import memcache
 import random
 import time
+import datetime
 
 class mySetThread (threading.Thread):
 	def __init__(self, threadId, name):
@@ -96,7 +97,7 @@ string_val = "x" * datasize
 
 mc_server1 = memcache.Client([server], debug=0)
 
-mc_server1.set("den", "xxx_data")
+mc_server1.set("den", "mc_xxx_data" + datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"))
 print mc_server1.get("den")
 
 # precreate initial items

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 #
+# python mcsimple.py
 
 import sys
 import memcache
