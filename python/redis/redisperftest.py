@@ -8,6 +8,7 @@ import threading
 import redis
 import random
 import time
+import datetime
 
 class mySetThread (threading.Thread):
 	def __init__(self, threadId, name):
@@ -32,7 +33,7 @@ def do_redis_set(threadId, iterations):
 	for i in range(num_servers):
 		rserver.append(redis.Redis(server, 6379 + i))
 
-	keyPrefix = "test_key_" + str(threadId) + "_"
+	keyPrefix = "test_key1_" + str(threadId) + "_"
 
 	for i in range(iterations): 
 		id = currentItem[threadId]
@@ -54,7 +55,7 @@ def do_redis_get(threadId, iterations):
 		backetId = random.randrange(0, writethreadscount)
 		maxId = currentItem[backetId]
 		id = random.randrange(0, maxId)
-		keyPrefix = "test_key_" + str(backetId) + "_"
+		keyPrefix = "test_key1_" + str(backetId) + "_"
 		key = keyPrefix + str(id)
 
 		serverId = abs(hash(key)) % (num_servers)
@@ -95,7 +96,7 @@ string_val = "x" * datasize
 
 redis1 = redis.Redis(server, 6379)
 
-redis1.set("den", "xxx_data_redis!!!!")
+redis1.set("den", "xxx_data_redis!!!!" + datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"))
 print redis1.get("den")
 
 # precreate initial items

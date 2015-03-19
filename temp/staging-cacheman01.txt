@@ -1,0 +1,128 @@
+[dsamoylov@staging-cacheman01.dev bin]$ sudo ./jstack -F 15027
+Attaching to process ID 15027, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.1-b02
+Deadlock Detection:
+
+No deadlocks found.
+
+Thread 23666: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - scala.concurrent.forkjoin.ForkJoinPool.scan(scala.concurrent.forkjoin.ForkJoinPool$WorkQueue) @bci=525, line=2075 (Compiled frame)
+ - scala.concurrent.forkjoin.ForkJoinPool.runWorker(scala.concurrent.forkjoin.ForkJoinPool$WorkQueue) @bci=8, line=1979 (Compiled frame)
+ - scala.concurrent.forkjoin.ForkJoinWorkerThread.run() @bci=14, line=107 (Interpreted frame)
+
+
+Thread 23553: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - scala.concurrent.forkjoin.ForkJoinPool.idleAwaitWork(scala.concurrent.forkjoin.ForkJoinPool$WorkQueue, long, long) @bci=129, line=2135 (Interpreted frame)
+ - scala.concurrent.forkjoin.ForkJoinPool.scan(scala.concurrent.forkjoin.ForkJoinPool$WorkQueue) @bci=463, line=2067 (Compiled frame)
+ - scala.concurrent.forkjoin.ForkJoinPool.runWorker(scala.concurrent.forkjoin.ForkJoinPool$WorkQueue) @bci=8, line=1979 (Compiled frame)
+ - scala.concurrent.forkjoin.ForkJoinWorkerThread.run() @bci=14, line=107 (Interpreted frame)
+
+
+Thread 25180: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - java.util.concurrent.locks.LockSupport.park(java.lang.Object) @bci=14, line=158 (Interpreted frame)
+ - java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() @bci=42, line=1987 (Interpreted frame)
+ - java.util.concurrent.LinkedBlockingQueue.take() @bci=29, line=399 (Interpreted frame)
+ - org.apache.zookeeper.ClientCnxn$EventThread.run() @bci=9, line=494 (Interpreted frame)
+
+
+Thread 25179: (state = IN_NATIVE)
+ - sun.nio.ch.EPollArrayWrapper.epollWait(long, int, long, int) @bci=0 (Compiled frame; information may be imprecise)
+ - sun.nio.ch.EPollArrayWrapper.poll(long) @bci=18, line=210 (Compiled frame)
+ - sun.nio.ch.EPollSelectorImpl.doSelect(long) @bci=28, line=65 (Compiled frame)
+ - sun.nio.ch.SelectorImpl.lockAndDoSelect(long) @bci=37, line=69 (Compiled frame)
+ - sun.nio.ch.SelectorImpl.select(long) @bci=30, line=80 (Compiled frame)
+ - org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(int, java.util.List, java.util.LinkedList, org.apache.zookeeper.ClientCnxn) @bci=6, line=349 (Compiled frame)
+ - org.apache.zookeeper.ClientCnxn$SendThread.run() @bci=604, line=1081 (Compiled frame)
+
+
+Thread 15028: (state = BLOCKED)
+
+
+Thread 15303: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - java.util.concurrent.locks.LockSupport.park(java.lang.Object) @bci=14, line=158 (Interpreted frame)
+ - java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() @bci=42, line=1987 (Interpreted frame)
+ - java.util.concurrent.DelayQueue.take() @bci=28, line=160 (Compiled frame)
+ - java.util.concurrent.DelayQueue.take() @bci=1, line=39 (Interpreted frame)
+ - org.apache.curator.framework.imps.CuratorFrameworkImpl.backgroundOperationsLoop() @bci=10, line=767 (Interpreted frame)
+ - org.apache.curator.framework.imps.CuratorFrameworkImpl.access$400(org.apache.curator.framework.imps.CuratorFrameworkImpl) @bci=1, line=58 (Interpreted frame)
+ - org.apache.curator.framework.imps.CuratorFrameworkImpl$4.call() @bci=4, line=265 (Interpreted frame)
+ - java.util.concurrent.FutureTask$Sync.innerRun() @bci=30, line=303 (Interpreted frame)
+ - java.util.concurrent.FutureTask.run() @bci=4, line=138 (Interpreted frame)
+ - java.util.concurrent.ThreadPoolExecutor$Worker.runTask(java.lang.Runnable) @bci=59, line=886 (Interpreted frame)
+ - java.util.concurrent.ThreadPoolExecutor$Worker.run() @bci=28, line=908 (Interpreted frame)
+ - java.lang.Thread.run() @bci=11, line=662 (Interpreted frame)
+
+
+Thread 15300: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - java.util.concurrent.locks.LockSupport.park(java.lang.Object) @bci=14, line=158 (Interpreted frame)
+ - java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() @bci=42, line=1987 (Interpreted frame)
+ - java.util.concurrent.ArrayBlockingQueue.take() @bci=20, line=317 (Interpreted frame)
+ - org.apache.curator.framework.state.ConnectionStateManager.processEvents() @bci=13, line=245 (Interpreted frame)
+ - org.apache.curator.framework.state.ConnectionStateManager.access$000(org.apache.curator.framework.state.ConnectionStateManager) @bci=1, line=43 (Interpreted frame)
+ - org.apache.curator.framework.state.ConnectionStateManager$1.call() @bci=4, line=111 (Interpreted frame)
+ - java.util.concurrent.FutureTask$Sync.innerRun() @bci=30, line=303 (Interpreted frame)
+ - java.util.concurrent.FutureTask.run() @bci=4, line=138 (Interpreted frame)
+ - java.util.concurrent.ThreadPoolExecutor$Worker.runTask(java.lang.Runnable) @bci=59, line=886 (Interpreted frame)
+ - java.util.concurrent.ThreadPoolExecutor$Worker.run() @bci=28, line=908 (Interpreted frame)
+ - java.lang.Thread.run() @bci=11, line=662 (Interpreted frame)
+
+
+Thread 15299: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - java.util.concurrent.locks.LockSupport.parkNanos(java.lang.Object, long) @bci=20, line=198 (Compiled frame)
+ - java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(long) @bci=68, line=2025 (Compiled frame)
+ - java.util.concurrent.DelayQueue.take() @bci=57, line=164 (Compiled frame)
+ - java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take() @bci=4, line=609 (Compiled frame)
+ - java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take() @bci=1, line=602 (Compiled frame)
+ - java.util.concurrent.ThreadPoolExecutor.getTask() @bci=78, line=947 (Compiled frame)
+ - java.util.concurrent.ThreadPoolExecutor$Worker.run() @bci=18, line=907 (Compiled frame)
+ - java.lang.Thread.run() @bci=11, line=662 (Interpreted frame)
+
+
+Thread 15298: (state = BLOCKED)
+ - sun.misc.Unsafe.park(boolean, long) @bci=0 (Interpreted frame)
+ - java.util.concurrent.locks.LockSupport.parkNanos(java.lang.Object, long) @bci=20, line=198 (Compiled frame)
+ - java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(long) @bci=68, line=2025 (Compiled frame)
+ - java.util.concurrent.DelayQueue.take() @bci=57, line=164 (Compiled frame)
+ - java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take() @bci=4, line=609 (Compiled frame)
+ - java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take() @bci=1, line=602 (Compiled frame)
+ - java.util.concurrent.ThreadPoolExecutor.getTask() @bci=78, line=947 (Compiled frame)
+ - java.util.concurrent.ThreadPoolExecutor$Worker.run() @bci=18, line=907 (Compiled frame)
+ - java.lang.Thread.run() @bci=11, line=662 (Interpreted frame)
+
+
+Thread 15293: (state = BLOCKED)
+ - java.lang.Thread.sleep(long) @bci=0 (Compiled frame; information may be imprecise)
+ - akka.actor.LightArrayRevolverScheduler.waitNanos(long) @bci=36, line=226 (Compiled frame)
+ - akka.actor.LightArrayRevolverScheduler$$anon$8.nextTick() @bci=51, line=405 (Compiled frame)
+ - akka.actor.LightArrayRevolverScheduler$$anon$8.run() @bci=1, line=375 (Interpreted frame)
+ - java.lang.Thread.run() @bci=11, line=662 (Interpreted frame)
+
+
+Thread 15036: (state = BLOCKED)
+
+
+Thread 15035: (state = BLOCKED)
+
+
+Thread 15034: (state = BLOCKED)
+ - java.lang.Object.wait(long) @bci=0 (Interpreted frame)
+ - java.lang.ref.ReferenceQueue.remove(long) @bci=44, line=118 (Interpreted frame)
+ - java.lang.ref.ReferenceQueue.remove() @bci=2, line=134 (Compiled frame)
+ - java.lang.ref.Finalizer$FinalizerThread.run() @bci=3, line=159 (Compiled frame)
+
+
+Thread 15033: (state = BLOCKED)
+ - java.lang.Object.wait(long) @bci=0 (Interpreted frame)
+ - java.lang.Object.wait() @bci=2, line=485 (Interpreted frame)
+ - java.lang.ref.Reference$ReferenceHandler.run() @bci=46, line=116 (Interpreted frame)
+
+
+[dsamoylov@staging-cacheman01.dev bin]$ 
