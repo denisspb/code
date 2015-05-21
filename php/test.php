@@ -1,33 +1,13 @@
 <?php
 
-class Box_FakeItem {
-	public $iVal;
-	public $bVal;
-	public $dVal;
-	public $sVal;
-}
+$methods_to_use_slave = 'yyy, xxxx';
+$methods_to_use_slave_arr = explode(',', $methods_to_use_slave);
+$method = "xxxx";
 
-$v = new Box_FakeItem();
-
-$v->iVal = 123;
-$v->bVal = false;
-$v->dVal = 1.23;
-$v->sVal = "abc";
-
-$s = serialize($v);
-
-print $s;
-
-
-$a = [];
-
-
-$b = explode(";", $a[1]);
-
-if (!$b || count($b) != 2) {
-    print "error";
+if (in_array($method, $methods_to_use_slave_arr)) {
+    print "in array";
 } else {
-    print $b;
+    print "NOT in array";
 }
 
 print "DONE";
